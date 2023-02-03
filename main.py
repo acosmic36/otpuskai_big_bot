@@ -16,8 +16,10 @@ async def send_message_time(bot: Bot, text_message):
     await bot.send_message(config.group_id, text_message, parse_mode='HTML')
 
 
-# scheduler.add_job(send_message_time, trigger="interval", seconds=5, args=(bot,'Приветики'))
-# scheduler.add_job(send_message_time3, 'cron', day_of_week='mon-sun', hour=21, minute=16, end_date='2023-05-30', args=(bot,))
+scheduler.add_job(send_message_time, trigger="interval", minutes=60, args=(bot,'Я уже на сервере! Присылаю приветики каждый час!'))
+scheduler.add_job(send_message_time, 'cron', day_of_week='mon-sun', hour=19, minute=25, end_date='2023-05-30', args=(bot, 'Это сообщение приходит каждый день в 19:25'))
+scheduler.add_job(send_message_time, 'cron', day_of_week='mon-sun', hour=17, minute=15, end_date='2023-05-30', args=(bot, 'Это сообщение приходит каждый день в 17:15'))
+
 # @dp.message_handler(chat_type=[types.ChatType.SUPERGROUP, types.ChatType.GROUP], content_types=["new_chat_members"], chat_id=config.ov_test_group_id)
 
 
