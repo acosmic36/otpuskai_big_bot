@@ -1,3 +1,2 @@
 TOKEN = '6076113319:AAE76Z_dchjJnJWOkXOyeRR_3-t1_Zcey7A'
-# ggeger
 group_id = -1001892853052
