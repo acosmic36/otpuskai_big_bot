@@ -12,7 +12,15 @@ import sqlite_db
 logging.basicConfig(level=logging.INFO)
 bot = Bot(token=config.TOKEN)
 dp = Dispatcher(bot=bot)
-scheduler = AsyncIOScheduler(timezone="Europe/Moscow")
+print("hello users")
+try:
+    scheduler = AsyncIOScheduler(timezone="Europe/Moscow")
+    print("scheduler created")
+except:
+    print("scheduler creation failed")
+finally:
+    pass
+
 
 keyboard: InlineKeyboardMarkup = InlineKeyboardMarkup()
 keyboard_back: InlineKeyboardMarkup = InlineKeyboardMarkup()
