@@ -96,9 +96,6 @@ dp.register_callback_query_handler(process_button_back_press,
                                    text='big_button_back_pressed')
 
 
-
-
-
 async def autopost_message(bot: Bot, message_type: str):
     if sqlite_db.get_msg_id_by_type(int(message_type)) is None:
         msg = await bot.send_message(config.group_id, messages.msg_dict.get(message_type), parse_mode = 'HTML')
@@ -112,7 +109,7 @@ async def autopost_message(bot: Bot, message_type: str):
         sqlite_db.update_id_by_type(message_type, msg["message_id"])
 
 
-# scheduler.add_job(main.autopost_message, trigger="interval", seconds=10, args=(bot, '1'))
+scheduler.add_job(main.autopost_message, trigger="interval", seconds=30, args=(bot, '1'))
 # scheduler.add_job(main.autopost_message, trigger="interval", seconds=200, args=(bot, '2'))
     scheduler.add_job(autopost_message, 'cron', day_of_week='mon-sun', hour=8, minute=00, end_date='2023-05-30', args=(bot, '1'))
     scheduler.add_job(autopost_message, 'cron', day_of_week='mon-sun', hour=20, minute=00, end_date='2023-05-30', args=(bot, '1'))
